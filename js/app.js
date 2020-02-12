@@ -98,6 +98,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if(deleteElement.className === 'fas fa-times-circle icon-hover') {
             const toDelete = deleteElement.parentElement.parentElement.parentElement.parentElement;
             toDelete.remove();
+
+            progress = completedTasks / list.children.length * barWidth;
+            bar.style.width = progress + "px";
+            bar.innerText = Math.floor(completedTasks / list.children.length * 100) + "%";
+
+            if(list.children.length === 0) {
+                bar.style.width = "0px";
+                bar.innerText = 0 + "%";
+            }
         }
     });
 
@@ -108,13 +117,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const toCheck = checkElement.parentElement.parentElement.parentElement;
             toCheck.classList.toggle('finished');
 
-            allListElements = list.children.length;
             completedTasks = document.querySelectorAll('.finished').length;
-            progressWidth = completedTasks / allListElements;
+            progressWidth = completedTasks / list.children.length;
             progress = progressWidth * barWidth;
             bar.style.width = progress + "px";
-            console.log(allListElements, completedTasks, progressWidth, progressWidth,bar.style.width)
             bar.innerText = Math.floor(progressWidth * 100) + "%";
+
+            if(list.children.length === 0) {
+                bar.style.width = "0px";
+                bar.innerText = 0 + "%";
+            }
         }
     });
 
@@ -123,5 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
 
         list.innerHTML = '';
+
+        bar.style.width = completedTasks / list.children.length * barWidth + "px";
+        bar.innerText = Math.floor(completedTasks / list.children.length * 100) + "%";
+
+        if(list.children.length === 0) {
+            bar.style.width = "0px";
+            bar.innerText = 0 + "%";
+        }
     });
 });
