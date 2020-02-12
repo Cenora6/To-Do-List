@@ -11,4 +11,4 @@ A "To Do List" can be used to create a list of tasks to do. Every task has an ad
 - Vanilla JavaScript
 
 ## Preview: 
-Check the preview of the quiz [HERE](https://https://cenora6.github.io/To-Do-List/)
+Check the preview [HERE](https://https://cenora6.github.io/To-Do-List/)
