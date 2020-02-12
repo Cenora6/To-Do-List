@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const button = document.getElementById('addTaskButton');
     const list = document.getElementById('taskList');
 
+    const progressBar = document.getElementById('bar');
+    const bar = document.getElementById('progress');
+    const barWidth = progressBar.clientWidth;
+
+    let completedTasks = document.querySelectorAll('.finished').length;
+    let allListElements = list.children.length;
+    let progressWidth = completedTasks / allListElements;
+    let progress = progressWidth * barWidth;
+    bar.style.width = progress + "px";
+    bar.innerText = Math.floor(progressWidth * 100) + "%";
+
     input.addEventListener('focus', function () {
         form.classList.add('focusInput');
     });
@@ -72,32 +83,45 @@ document.addEventListener('DOMContentLoaded', function () {
         newTask.appendChild(newDiv);
 
         list.appendChild(newTask);
-
         input.value = "";
+        allListElements = list.children.length;
+        completedTasks = document.querySelectorAll('.finished').length;
+        progressWidth = completedTasks / allListElements;
+        progress = progressWidth * barWidth;
+        bar.style.width = progress + "px";
+        bar.innerText = Math.floor(progressWidth * 100) + "%";
     });
 
-    const checkButton = document.getElementsByClassName('check');
-    const deleteButton = document.getElementsByClassName('delete');
 
-    for (let i = 0; i < deleteButton.length; i++) {
+    list.addEventListener('click', function (e) {
+        let deleteElement = e.target;
+        if(deleteElement.className === 'fas fa-times-circle icon-hover') {
+            const toDelete = deleteElement.parentElement.parentElement.parentElement.parentElement;
+            toDelete.remove();
+        }
+    });
 
-        deleteButton[i].addEventListener('click', function () {
-            const task = deleteButton[i].parentElement.parentElement.parentElement;
-            task.remove();
-        });
-    }
 
-    for (let i = 0; i < checkButton.length; i++) {
-        checkButton[i].addEventListener('click', function () {
-            const task = checkButton[i].parentElement.parentElement;
-            task.classList.toggle('finished')
-        });
-    }
+    list.addEventListener('click', function (e) {
+        let checkElement = e.target;
+        if(checkElement.className === 'fas fa-check-circle icon-hover') {
+            const toCheck = checkElement.parentElement.parentElement.parentElement;
+            toCheck.classList.toggle('finished');
+
+            allListElements = list.children.length;
+            completedTasks = document.querySelectorAll('.finished').length;
+            progressWidth = completedTasks / allListElements;
+            progress = progressWidth * barWidth;
+            bar.style.width = progress + "px";
+            console.log(allListElements, completedTasks, progressWidth, progressWidth,bar.style.width)
+            bar.innerText = Math.floor(progressWidth * 100) + "%";
+        }
+    });
 
     const deleteAllButton = document.getElementById('removeFinishedTasksButton');
     deleteAllButton.addEventListener('click', function (e) {
         e.preventDefault();
 
         list.innerHTML = '';
-    })
+    });
 });
