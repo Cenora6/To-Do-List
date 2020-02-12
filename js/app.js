@@ -93,8 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
             bar.style.width = progress + "px";
             bar.innerText = Math.floor(progressWidth * 100) + "%";
         } else {
+            const label = document.querySelector('.label');
+            console.log(label);
             input.classList.add('error');
-
+            label.innerText = "task can't be empty";
+            label.classList.add('errorLabel');
         }
     });
 
