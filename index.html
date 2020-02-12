@@ -7,31 +7,32 @@
 </head>
 <body>
 
-<section class="toDoList">
-    <input id="taskInput" placeholder="Place your task here"><br>
-    <button id="addTaskButton">Add task</button>
+<section class="todoList">
+
+    <form class="toDoForm">
+        <span></span>
+        <input id="taskInput" placeholder="task"><br>
+        <button id="addTaskButton">Add task</button>
+    </form>
+
+    <div class="list">
+        <ul id="taskList">
+
+
+        </ul>
+    </div>
+
+    <div>
+        <button id="removeFinishedTasksButton">Remove finished tasks</button>
+    </div>
+
 </section>
 
-<!-- additional task
-Tasks to finish: <span id="counter"></span>
--->
-
-<section class="taskList">
-    <ul id="taskList">
-        <!--<li>
-            <h1>Task 1</h1>
-            <button>Delete</button>
-            <button>Complete</button>
-        </li>
-        <li class="done">
-            <h1>Task 2</h1>
-            <button>Delete</button>
-            <button>Complete</button>
-        </li>-->
-    </ul>
+<section class="progressBar">
+    <div class="bar"></div>
+    <span></span>
 </section>
 
-<button id="removeFinishedTasksButton">Remove finished tasks</button>
 
 </body>
 </html>

@@ -10,32 +10,69 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url("../images/background.png");
     position: relative;
+    background: #F1A4FF url("../images/background.png") no-repeat center;
+    background-size: cover;
+    overflow: hidden;
 }
 
-body:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: url("../images/scroll.png") no-repeat top;
-    position: absolute;
-    top: 0;
-    z-index: 0;
-}
-
-section {
+.todoList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: 80%;
+    margin: auto 0;
     z-index: 1;
 }
 
-.toDoList {
-    margin-top: 15rem;
+.todoList::before {
+    content: "";
+    position: absolute;
+    background: #FFF;
+    opacity: 0.5;
+    z-index: -1;
+    width: 40%;
+    height: 80%;
+
 }
 
-.toDoList input {
+.toDoForm input {
+    padding: 1rem;
     width: 35rem;
     height: 3rem;
     margin: 2rem 0;
     background: transparent;
-    border: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+.toDoList input:focus {
+    position: relative;
+}
+
+.progressBar {
+    margin: 2rem;
+}
+
+.progressBar .bar {
+    width: 40rem;
+    height: 3rem;
+    background: #000;
+    border: 0.2rem solid white;
+    border-radius: 3rem;
+    opacity: 0.5;
+}
+
+.progressBar span {
+    position: absolute;
+    bottom: 2rem;
+    width: 20rem;
+    height: 3rem;
+    background: mediumpurple;
+    border-radius: 3rem;
+    opacity: 0.8;
 }
