@@ -49,20 +49,65 @@ h1 {
 }
 
 .toDoForm {
+    display: flex;
+    flex-direction: column;
     margin: 4rem 0;
+    position: relative;
+}
+
+.label {
+    font-family: 'Zilla Slab', serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #FFF;
+    position: absolute;
+    /*transform: translateY(-30px);*/
+    top: 1.9rem;
+    opacity: 0.5;
+    transition: .5s;
+}
+
+.focusInput .label {
+    font-size: 1.2rem;
+    color: #FFF;
+    font-weight: 500;
+    transform: translateY(-30px);
+    opacity: 1;
 }
 
 .toDoForm input {
     margin: 1rem 0;
-    padding: 1rem;
     width: 35rem;
     height: 3rem;
     background: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid black;
     outline: none;
+    border: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+    font-family: 'Zilla Slab', serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #FFF;
+}
+
+/*.toDoForm input::placeholder {*/
+/*    color: #FFF;*/
+/*    opacity: 0.5;*/
+/*}*/
+
+.toDoForm input ~ .focus {
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+    width: 0;
+    height: 0.1rem;
+    background-color: mediumpurple;
+    transition: 0.4s;
+}
+
+.toDoForm input:focus ~ .focus {
+    width: 100%;
+    transition: 0.4s;
 }
 
 .list {
@@ -108,21 +153,23 @@ h1 {
 
 .delete {
     color: #3B00FF;
+    opacity: 0.8;
     text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 }
 
 .check {
     color: #8132FF;
+    opacity: 0.8;
     text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 }
 
 .icon-default {
-    transition: opacity .3s, transform .3s;
+    transition: opacity .8s, transform .8s;
     opacity: 0.8;
 }
 
 .icon-hover {
-    transition: opacity .3s, transform .3s;
+    transition: opacity .8s, transform .8s;
     opacity: 0;
 }
 
