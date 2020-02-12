@@ -88,10 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     for (let i = 0; i < checkButton.length; i++) {
-
         checkButton[i].addEventListener('click', function () {
-
-
+            const task = checkButton[i].parentElement.parentElement;
+            task.classList.toggle('finished')
         });
     }
 

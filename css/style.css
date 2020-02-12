@@ -269,3 +269,8 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #8120FF;
 }
+
+.finished {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
