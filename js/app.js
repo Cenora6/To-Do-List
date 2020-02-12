@@ -74,7 +74,25 @@ document.addEventListener('DOMContentLoaded', function () {
         list.appendChild(newTask);
 
         input.value = "";
-    })
+    });
 
+    const checkButton = document.getElementsByClassName('check');
+    const deleteButton = document.getElementsByClassName('delete');
+
+    for (let i = 0; i < deleteButton.length; i++) {
+
+        deleteButton[i].addEventListener('click', function () {
+            const task = deleteButton[i].parentElement.parentElement.parentElement;
+            task.remove();
+        });
+    }
+
+    for (let i = 0; i < checkButton.length; i++) {
+
+        checkButton[i].addEventListener('click', function () {
+
+
+        });
+    }
 
 });
