@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
     bar.innerText = Math.floor(progressWidth * 100) + "%";
 
     input.addEventListener('focus', function () {
+        input.classList.remove('error');
+        label.classList.remove('errorLabel');
+        label.innerText = "task";
         form.classList.add('focusInput');
     });
 
@@ -32,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         form.classList.remove('focusInput')
     });
 
+    const label = document.querySelector('.label');
 
     button.addEventListener('click', function (e) {
         e.preventDefault();
@@ -93,12 +97,11 @@ document.addEventListener('DOMContentLoaded', function () {
             bar.style.width = progress + "px";
             bar.innerText = Math.floor(progressWidth * 100) + "%";
         } else {
-            const label = document.querySelector('.label');
-            console.log(label);
             input.classList.add('error');
             label.innerText = "task can't be empty";
             label.classList.add('errorLabel');
         }
+
     });
 
 
