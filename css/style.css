@@ -32,9 +32,10 @@ h1 {
     align-items: center;
     flex-direction: column;
     width: 40%;
-    height: 80%;
+    height: 80vh;
     margin: 2rem 0;
     z-index: 1;
+    padding-bottom: 2rem;
 }
 
 .todoList::before {
@@ -44,8 +45,7 @@ h1 {
     opacity: 0.5;
     z-index: -1;
     width: 40%;
-    height: 100%;
-    margin-bottom: 4rem;
+    height: 80vh;
 }
 
 .toDoForm {
@@ -90,6 +90,10 @@ h1 {
     color: #FFF;
 }
 
+.error {
+    border-bottom: 1px solid #ff6641;
+}
+
 .toDoForm input ~ .focus {
     position: absolute;
     bottom: 5rem;
@@ -107,11 +111,9 @@ h1 {
 
 .list {
     width: 80%;
-}
-
-.list ul {
-    height: 40rem;
+    height: 80%;
     overflow-y: auto;
+    margin-bottom: 2rem;
 }
 
 .list li {
@@ -254,7 +256,7 @@ button:hover {
 
 .removeAll {
     position: absolute;
-    bottom: -11rem;
+    bottom: 1rem;
     right: 35%;
 }
 

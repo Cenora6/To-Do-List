@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM');
 
     const date = new Date;
-    const day = date.getDay();
+    const day = date.getDate();
     const month = date.getMonth();
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
         "October", "November", "December"];
@@ -36,60 +36,66 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function (e) {
         e.preventDefault();
 
-        const newTask = document.createElement('li');
-        const date = document.createElement('span');
-        date.classList.add('date');
 
-        date.innerText = day + " " + monthNames[month] + " " + year;
+        if(input.value !== "") {
+            const newTask = document.createElement('li');
+            const date = document.createElement('span');
+            date.classList.add('date');
 
-        const newDiv = document.createElement('div');
-        newDiv.classList.add('task');
+            date.innerText = day + " " + monthNames[month] + " " + year;
 
-        const newP = document.createElement('p');
-        newP.innerText = input.value;
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('task');
 
-        const newLine = document.createElement('span');
-        newLine.classList.add('line');
+            const newP = document.createElement('p');
+            newP.innerText = input.value;
 
-        const icons = document.createElement('div');
-        const deleteIcons = document.createElement('div');
-        const checkIcons = document.createElement('div');
-        deleteIcons.classList.add('delete');
-        checkIcons.classList.add('check');
+            const newLine = document.createElement('span');
+            newLine.classList.add('line');
 
-        const checkIcon = document.createElement('i');
-        checkIcon.classList.add('fas', 'fa-check', 'icon-default');
-        const checkCircle = document.createElement('i');
-        checkCircle.classList.add('fas', 'fa-check-circle', 'icon-hover');
-        const deleteIcon = document.createElement('i');
-        deleteIcon.classList.add('fas', 'fa-times', 'icon-default');
-        const deleteCircleIcon = document.createElement('i');
-        deleteCircleIcon.classList.add('fas', 'fa-times-circle', 'icon-hover');
+            const icons = document.createElement('div');
+            const deleteIcons = document.createElement('div');
+            const checkIcons = document.createElement('div');
+            deleteIcons.classList.add('delete');
+            checkIcons.classList.add('check');
 
-        checkIcons.appendChild(checkIcon);
-        checkIcons.appendChild(checkCircle);
+            const checkIcon = document.createElement('i');
+            checkIcon.classList.add('fas', 'fa-check', 'icon-default');
+            const checkCircle = document.createElement('i');
+            checkCircle.classList.add('fas', 'fa-check-circle', 'icon-hover');
+            const deleteIcon = document.createElement('i');
+            deleteIcon.classList.add('fas', 'fa-times', 'icon-default');
+            const deleteCircleIcon = document.createElement('i');
+            deleteCircleIcon.classList.add('fas', 'fa-times-circle', 'icon-hover');
 
-        deleteIcons.appendChild(deleteIcon);
-        deleteIcons.appendChild(deleteCircleIcon);
+            checkIcons.appendChild(checkIcon);
+            checkIcons.appendChild(checkCircle);
 
-        icons.appendChild(checkIcons);
-        icons.appendChild(deleteIcons);
+            deleteIcons.appendChild(deleteIcon);
+            deleteIcons.appendChild(deleteCircleIcon);
 
-        newDiv.appendChild(newP);
-        newDiv.appendChild(newLine);
-        newDiv.appendChild(icons);
+            icons.appendChild(checkIcons);
+            icons.appendChild(deleteIcons);
 
-        newTask.appendChild(date);
-        newTask.appendChild(newDiv);
+            newDiv.appendChild(newP);
+            newDiv.appendChild(newLine);
+            newDiv.appendChild(icons);
 
-        list.appendChild(newTask);
-        input.value = "";
-        allListElements = list.children.length;
-        completedTasks = document.querySelectorAll('.finished').length;
-        progressWidth = completedTasks / allListElements;
-        progress = progressWidth * barWidth;
-        bar.style.width = progress + "px";
-        bar.innerText = Math.floor(progressWidth * 100) + "%";
+            newTask.appendChild(date);
+            newTask.appendChild(newDiv);
+
+            list.appendChild(newTask);
+            input.value = "";
+            allListElements = list.children.length;
+            completedTasks = document.querySelectorAll('.finished').length;
+            progressWidth = completedTasks / allListElements;
+            progress = progressWidth * barWidth;
+            bar.style.width = progress + "px";
+            bar.innerText = Math.floor(progressWidth * 100) + "%";
+        } else {
+            input.classList.add('error');
+
+        }
     });
 
 
@@ -107,6 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 bar.style.width = "0px";
                 bar.innerText = 0 + "%";
             }
+
+
         }
     });
 
