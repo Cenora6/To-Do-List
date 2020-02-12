@@ -94,4 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const deleteAllButton = document.getElementById('removeFinishedTasksButton');
+    deleteAllButton.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        list.innerHTML = '';
+    })
 });
