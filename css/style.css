@@ -51,7 +51,7 @@ h1 {
 .toDoForm {
     display: flex;
     flex-direction: column;
-    margin: 4rem 0;
+    margin: 3rem 0;
     position: relative;
 }
 
@@ -114,13 +114,22 @@ h1 {
     width: 80%;
 }
 
+.list ul {
+    height: 40rem;
+    overflow-y: scroll;
+}
+
 .list li {
-    padding: 0.5rem 1rem;
     list-style-type: none;
+    margin: 0 1rem;
+}
+
+.list li .task {
+    padding: 0.5rem 1rem;
     background:  rgba(255,255,255, 0.5);
-    border: 0.5rem solid #FFF;
+    border: 0.3rem solid #FFF;
     border-radius: 3rem;
-    margin: 1rem 0;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,20 +138,35 @@ h1 {
     line-height: 1.5rem;
 }
 
-.list li p {
-    width: 75%;
+.list li .date {
+    margin: 0 2rem;
+    font-family: 'Zilla Slab', serif;
+    font-size: 0.8rem;
+    color: #FFF;
+}
+
+.list li .task  p {
+    width: 90%;
     padding: 0 1rem;
 }
 
-.list li div {
+.list li .task  div {
     position: relative;
     height: 5rem;
-    width: 20%;
+    width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: right;
     flex-direction: column;
+}
+
+.list li .task  .line {
+    margin: -1rem 0;
+    height: 6rem;
+    width: 0.3rem;
+    background: #FFFFFF;
+    right: 39%;
 }
 
 .fas {
@@ -179,14 +203,6 @@ h1 {
 
 .check:hover .icon-default, .delete:hover .icon-default {
     opacity: 0;
-}
-
-.list li span {
-    height: 7rem;
-    width: 0.5rem;
-    background: #FFFFFF;
-    position: absolute;
-    right: 42%;
 }
 
 .progressBar {
@@ -237,4 +253,24 @@ button:hover {
     position: absolute;
     bottom: -11rem;
     right: 35%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: mediumpurple;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: mediumpurple;
 }
