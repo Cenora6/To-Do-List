@@ -13,7 +13,17 @@ body {
     position: relative;
     background: #F1A4FF url("../images/background.png") no-repeat center;
     background-size: cover;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    position: absolute;
+    font-size: 3rem;
+    color: #FFF;
+    top: 6rem;
+    font-weight: 300;
+    text-shadow: 6px 6px 0 rgba(0,0,0,0.2);
 }
 
 .todoList {
@@ -23,7 +33,7 @@ body {
     flex-direction: column;
     width: 40%;
     height: 80%;
-    margin: auto 0;
+    margin: 2rem 0;
     z-index: 1;
 }
 
@@ -34,24 +44,102 @@ body {
     opacity: 0.5;
     z-index: -1;
     width: 40%;
-    height: 80%;
+    height: 100%;
+    margin-bottom: 4rem;
+}
 
+.toDoForm {
+    margin: 4rem 0;
 }
 
 .toDoForm input {
+    margin: 1rem 0;
     padding: 1rem;
     width: 35rem;
     height: 3rem;
-    margin: 2rem 0;
     background: transparent;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid black;
+    outline: none;
 }
 
-.toDoList input:focus {
+.list {
+    width: 80%;
+}
+
+.list li {
+    padding: 0.5rem 1rem;
+    list-style-type: none;
+    background:  rgba(255,255,255, 0.5);
+    border: 0.5rem solid #FFF;
+    border-radius: 3rem;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Zilla Slab', serif;
+    font-weight: 300;
+    line-height: 1.5rem;
+}
+
+.list li p {
+    width: 75%;
+    padding: 0 1rem;
+}
+
+.list li div {
     position: relative;
+    height: 5rem;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    flex-direction: column;
+}
+
+.fas {
+    font-size: 1.5rem;
+    position: absolute;
+    cursor: pointer;
+}
+
+.delete {
+    color: #3B00FF;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+.check {
+    color: #8132FF;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+.icon-default {
+    transition: opacity .3s, transform .3s;
+    opacity: 0.8;
+}
+
+.icon-hover {
+    transition: opacity .3s, transform .3s;
+    opacity: 0;
+}
+
+.check:hover .icon-hover, .delete:hover .icon-hover {
+    opacity: 0.8;
+}
+
+.check:hover .icon-default, .delete:hover .icon-default {
+    opacity: 0;
+}
+
+.list li span {
+    height: 7rem;
+    width: 0.5rem;
+    background: #FFFFFF;
+    position: absolute;
+    right: 42%;
 }
 
 .progressBar {
@@ -69,10 +157,37 @@ body {
 
 .progressBar span {
     position: absolute;
-    bottom: 2rem;
+    top: 2rem;
     width: 20rem;
     height: 3rem;
     background: mediumpurple;
     border-radius: 3rem;
     opacity: 0.8;
+}
+
+button {
+    padding: 0.5rem 2.5rem;
+    width: 10rem;
+    height: 3rem;
+    background: mediumpurple;
+    border: none;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+    font-family: 'Zilla Slab', serif;
+    color: #FFF;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+}
+
+button:hover {
+    border-radius: 1rem;
+    opacity: 0.8;
+}
+
+.removeAll {
+    position: absolute;
+    bottom: -11rem;
+    right: 35%;
 }
