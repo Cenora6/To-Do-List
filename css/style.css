@@ -53,6 +53,7 @@ h1 {
     flex-direction: column;
     margin: 3rem 0;
     position: relative;
+    width: 70%;
 }
 
 .label {
@@ -85,7 +86,7 @@ h1 {
 
 .toDoForm input {
     margin: 1rem 0;
-    width: 35rem;
+    width: 100%;
     height: 3rem;
     background: transparent;
     outline: none;
@@ -284,4 +285,71 @@ button:hover {
 .finished {
     opacity: 0.5;
     text-decoration: line-through;
+}
+
+@media only screen and (max-width: 768px) {
+
+    body {
+        background-size: 200% 100%;
+    }
+
+    .todoList {
+        width: 85%;
+    }
+
+    .todoList::before {
+        content: "";
+        width: 90%;
+    }
+
+    .toDoForm {
+        margin: 1rem 0;
+    }
+
+    .toDoForm input {
+        width: 100%;
+    }
+
+    .progressBar {
+        width: 90%;
+    }
+
+    .progressBar .bar {
+        width: 90%;
+    }
+
+    .list {
+        width: 100%;
+    }
+
+    .list li {
+        margin: 0 0.5rem;
+    }
+
+    .removeAll {
+        bottom: -3rem;
+        right: 25%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .todoList {
+        width: 80%;
+    }
+
+    .todoList::before {
+        content: "";
+        width: 80%;
+    }
+
+    .removeAll {
+        bottom: 5rem;
+        right: 20%;
+    }
+
 }
