@@ -17,12 +17,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const bar = document.getElementById('progress');
     const barWidth = progressBar.clientWidth;
 
-    let completedTasks = document.querySelectorAll('.finished').length;
-    let allListElements = list.children.length;
-    let progressWidth = completedTasks / allListElements;
-    let progress = progressWidth * barWidth;
-    bar.style.width = progress + "px";
-    bar.innerText = Math.floor(progressWidth * 100) + "%";
+    changeProgress();
+
+    function changeProgress () {
+        let completedTasks = document.querySelectorAll('.finished').length;
+        let allListElements = list.children.length;
+        let progressWidth = completedTasks / allListElements;
+        let progress = progressWidth * barWidth;
+        bar.style.width = progress + "px";
+        bar.innerText = Math.floor(progressWidth * 100) + "%";
+
+        if(list.children.length === 0) {
+            bar.style.width = "0px";
+            bar.innerText = 0 + "%";
+        }
+    }
 
     input.addEventListener('focus', function () {
         input.classList.remove('error');
@@ -90,12 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             list.appendChild(newTask);
             input.value = "";
-            allListElements = list.children.length;
-            completedTasks = document.querySelectorAll('.finished').length;
-            progressWidth = completedTasks / allListElements;
-            progress = progressWidth * barWidth;
-            bar.style.width = progress + "px";
-            bar.innerText = Math.floor(progressWidth * 100) + "%";
+            changeProgress();
+
         } else {
             input.classList.add('error');
             label.innerText = "task can't be empty";
@@ -110,17 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if(deleteElement.className === 'fas fa-times-circle icon-hover') {
             const toDelete = deleteElement.parentElement.parentElement.parentElement.parentElement;
             toDelete.remove();
-
-            progress = completedTasks / list.children.length * barWidth;
-            bar.style.width = progress + "px";
-            bar.innerText = Math.floor(completedTasks / list.children.length * 100) + "%";
-
-            if(list.children.length === 0) {
-                bar.style.width = "0px";
-                bar.innerText = 0 + "%";
-            }
-
-
+            changeProgress();
         }
     });
 
@@ -130,32 +125,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if(checkElement.className === 'fas fa-check-circle icon-hover') {
             const toCheck = checkElement.parentElement.parentElement.parentElement;
             toCheck.classList.toggle('finished');
-
-            completedTasks = document.querySelectorAll('.finished').length;
-            progressWidth = completedTasks / list.children.length;
-            progress = progressWidth * barWidth;
-            bar.style.width = progress + "px";
-            bar.innerText = Math.floor(progressWidth * 100) + "%";
-
-            if(list.children.length === 0) {
-                bar.style.width = "0px";
-                bar.innerText = 0 + "%";
-            }
+            changeProgress();
         }
     });
 
     const deleteAllButton = document.getElementById('removeFinishedTasksButton');
+    const finishedTasks = document.querySelectorAll('.finished');
+
+
     deleteAllButton.addEventListener('click', function (e) {
         e.preventDefault();
 
-        list.innerHTML = '';
-
-        bar.style.width = completedTasks / list.children.length * barWidth + "px";
-        bar.innerText = Math.floor(completedTasks / list.children.length * 100) + "%";
-
-        if(list.children.length === 0) {
-            bar.style.width = "0px";
-            bar.innerText = 0 + "%";
+        for (let i = 0; i < finishedTasks.length; i++) {
+            finishedTasks[i].parentElement.remove();
+            changeProgress()
         }
     });
 });
